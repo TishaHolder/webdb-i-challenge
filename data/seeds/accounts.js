@@ -1,3 +1,6 @@
+//pre-populate our database with sample data in order to see it in action. 
+//Seeds allow us to easily add and reset sample data.
+
 
 exports.seed = function(knex, Promise) {
   return knex('accounts').truncate()
