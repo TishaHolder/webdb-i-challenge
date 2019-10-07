@@ -1,7 +1,7 @@
 //import express
 const express = require('express');
 
-//creat server application
+//create server application
 const server = express();
 
 //middleware to use json

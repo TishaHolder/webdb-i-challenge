@@ -62,6 +62,7 @@ accountsRouter.post('/', (req, res) => {
         //sqlite does not care about the id being passed in but we include it anyway because other databases require it
         //sqlite returns an array with the id of the last record inserted
         //you can pass more than one record on an insert but it will only return the id of the last record inserted
+        //the 2nd argument (in this case the id) tells the DBMS what to return after post or insert
         .insert(accountData, 'id')
         .then( ([id]) => { //([id]) - grabs the id instead of wrapping it in an array
             accountDB('accounts')//nest database calls to return the account record using get instead of the id
@@ -121,6 +122,8 @@ accountsRouter.delete('/:id', (req, res) => {
     })    
 
 });
+
+
 
 //export accounts router
 module.exports = accountsRouter;

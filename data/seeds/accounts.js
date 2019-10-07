@@ -3,9 +3,11 @@
 
 
 exports.seed = function(knex, Promise) {
-  return knex('accounts').truncate()
-    .then(function () {
-      return knex('accounts').insert([
+  //if you leave off truncate or delete you will get a sqlite error because of the unique constraint
+  //so we need to truncate new information before we seed new data
+  return knex('accounts').truncate() //truncates resets the primary key back to one afer you delete the tables
+    .then(function () { //we pass an array into the insert method
+      return knex('accounts').insert([ //id will be autogenerateed so we don't have to write in
         { name: 'account-01', budget: 4000.00 },
         { name: 'account-02', budget: 206.75 },
         { name: 'account-03', budget: 6789.00 },
